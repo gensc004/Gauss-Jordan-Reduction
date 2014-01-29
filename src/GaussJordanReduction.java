@@ -1,6 +1,10 @@
 import java.util.Scanner;
 import java.util.Stack;
 public class GaussJordanReduction {
+	/*
+	this takes in a input using scanner the first two numbers you put in are the size of the matrix and the
+	rest are the numbers in the matrix reading from left to right.
+	*/
 	public static void main(String[] args) {
 		Scanner ob = new Scanner(System.in);
 		System.out.println("Input the size of the matrix followed by the numbers in it:");
@@ -14,6 +18,12 @@ public class GaussJordanReduction {
 		}
 		reduce(inputArray);
 	}
+	
+	/*
+	this function ruduces the matrix using the three steps that you can use using the Gauss-Jordan method.
+	we store the matrix in a two by two double matrix. we use doubles because we multiply the rows by 1/a, a
+	being the number that is in the leading co-efficient spot which could make a decimal.
+	*/
 	
 	public static void reduce(double[][] array) {
 		double multiple = 0;
@@ -56,6 +66,10 @@ public class GaussJordanReduction {
 		printBigArray(arr);
 	}
 	
+	/*
+	these functions are to print out the array in a matrix fromat
+	*/
+	
 	private static void printBigArray(double[][] array){
 		System.out.print("[");
 		for(int row = 0;row < array.length; row++){
@@ -73,12 +87,20 @@ public class GaussJordanReduction {
 	private static void printLittleArray(double[] array){
 		System.out.print("[");
 		for(int column = 0;column < array.length; column++){
-			System.out.print(array[column]);
+			if ( array[column]==0){
+				system.out.print("0.0")
+			}else{
+				System.out.print(array[column]);
+			}
 			if (column != array.length - 1){
 				System.out.print(",");
 			}
 		}
 	}
+	
+	/*
+	this function switches two rows of the array
+	*/
 	
 	private static void switchRows(double[][] arr, int row) {
 		Stack<Double> rowToSwitch = new Stack<Double>();
